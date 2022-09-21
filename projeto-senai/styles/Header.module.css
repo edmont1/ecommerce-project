@@ -39,7 +39,7 @@
 }
 
 
-@media (min-width: 305px) and (max-width: 850px)
+@media (min-width: 280px) and (max-width: 850px)
 {
   .headermain
    {
@@ -52,23 +52,37 @@
 {
   .menuflex
    {
-    justify-content: space-around;
+    margin: 0 200px;
 
    }
 
 }
 
-.search input{
-    align-self: center;
-    margin: 0 15px;
-    outline: none;
-    border: 2px solid white;
-    box-shadow: 1px 1px 1px 1px white;
-
-}
 
 .logotext{
     font-size: 45px;
     margin-right: 30px;
     font-family: 'Rubik Dirt'
+}
+
+.search input{
+    align-self: center;
+    outline: none;
+    border: 2px solid white;
+    align-self: center;
+
+
+}
+
+.search{
+    display: flex;
+    align-items: center;
+}
+
+.search div{
+    margin: 0 15px;
+    box-shadow: 1px 1px 1px 1px white;
+    border: 1px solid white;
+    align-self: center;
+    display: flex;
 }

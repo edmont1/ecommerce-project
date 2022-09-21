@@ -2,6 +2,7 @@ import { NextPage } from "next"
 import styles from '../styles/Header.module.css'
 import logo from '../pages/img/logo.png'
 import Image from "next/image"
+import searchicon from '../pages/img/search.png'
 
 const Header: NextPage = () => {
     return (
@@ -103,8 +104,13 @@ focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline
     <div className="flex items-center relative m-5">
       {/* Icon */}
       <div className={styles.search}>
-        <label htmlFor="">Buscar</label>
-        <input type="text" />
+        <label htmlFor="searchId">Buscar</label>
+        <div>
+          <input id="searchId" type="text" />
+          <a href="">
+          <img src={searchicon.src}/>
+          </a>
+        </div>
       </div>
       <a
         className="text-gray-500 hover:text-gray-700 focus:text-gray-700 mr-4"

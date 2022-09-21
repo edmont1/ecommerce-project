@@ -3,11 +3,15 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Image from 'next/image'
 import Banner from '../components/Banner'
+import Content from '../components/Content'
 import Header from '../components/Header'
 import styles from '../styles/Home.module.css'
 dynamic(import('tw-elements'),{ssr:false})
 
 const Home: NextPage = () => {
+
+
+
   return (
     <>
       <Head>
@@ -17,7 +21,6 @@ const Home: NextPage = () => {
       </Head>
       <Header/>
       <Banner/>
-      <p>cu</p>
 
     </>
   )
