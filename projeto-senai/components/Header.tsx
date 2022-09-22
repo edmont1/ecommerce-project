@@ -54,8 +54,6 @@ focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline
   flex
   items-center
   text-blue-400
-  hover:text-gray-900
-  focus:text-gray-900
   p-0
 "
         href="#"
@@ -68,7 +66,7 @@ focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline
           alt=""
           loading="lazy"
         />
-        <h1 className={styles.logotext}>Black Market</h1>
+        <h1 className={styles.logotext}>Market</h1>
       </a>
       {/* Left links */}
       <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto">

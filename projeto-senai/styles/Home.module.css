@@ -3,7 +3,6 @@
   .widthimg
    {
     width: 100vh;
-    height: 50px;
    }
 
 }
@@ -19,6 +18,6 @@
 }
 
 .bannerwidth{
-    height: 500px;
+    height: 400px;
     object-fit: cover;
 }
