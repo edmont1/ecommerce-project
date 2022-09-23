@@ -1,23 +1,4 @@
-@media (min-width: 280px) and (max-width: 850px)
-{
-  .widthimg
-   {
-    width: 100vh;
-   }
-
-}
-
-@media (min-width: 280px)
-{
-  .bannertextwidth
-   {
-    display: block !important;
-
-   }
-
-}
-
 .bannerwidth{
-    height: 400px;
+    height: 500px;
     object-fit: cover;
 }

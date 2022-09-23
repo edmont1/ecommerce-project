@@ -1,14 +1,26 @@
 .minimenu{
     display: flex;
-    padding-left: 1.5rem;
     width: 100%;
 
 }
 
 .navmenu{
     margin: auto;
+    background-color: rgba(0, 0, 0, 0.192);
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.527);
     
 }
+
+.c-mainmenu a:hover{
+    background: rgb(75, 12, 223);
+    color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.c-mainmenu a{
+    color: rgba(255, 255, 255, 0.527);
+}
+
 
 .minimenu li{
     position: relative;
@@ -20,8 +32,20 @@
 }
 
 .minimenu a{
-    padding: 10px 20px;
+    padding: 5px 20px;
     display: block;
+}
+
+.minimenu > li > a:hover{
+    background-color: rgb(75, 12, 223);
+    transform: scale(120%);
+    color: rgb(107 114 128 / var(--tw-text-opacity))
+}
+
+.submenu > li > a:hover{
+    background-color: rgb(78, 33, 184);
+    transform: scale(110%);
+    color: rgb(107 114 128 / var(--tw-text-opacity))
 }
 
 .submenu{
@@ -36,23 +60,15 @@
 .headermain{
     box-shadow: 2px 2px 2px 2px royalblue;
     z-index: 1;
+    background: rgb(3,2,38);
+    background: linear-gradient(90deg, rgba(3,2,38,1) 17%, rgba(9,115,121,1) 91%);
 }
 
-
-@media (min-width: 280px) and (max-width: 850px)
-{
-  .headermain
-   {
-    width: 100vh;
-   }
-
-}
-
-@media (min-width: 800px)
+@media (min-width: 850px)
 {
   .menuflex
    {
-        margin: 0 200px
+        justify-content: center;
    }
 
 }
@@ -76,6 +92,11 @@
 .search{
     display: flex;
     align-items: center;
+
+}
+
+.search label{
+    color: rgba(255, 255, 255, 0.527);
 }
 
 .search div{
@@ -85,4 +106,16 @@
     background-color: white;
     align-self: center;
     display: flex;
+}
+
+
+.signup{
+    display: flex;
+    
+}
+
+.signup a{
+    padding: 1.25rem;
+    border-radius: 0.25rem;
+    transition: 500ms;
 }

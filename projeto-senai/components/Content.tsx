@@ -8,7 +8,7 @@ const Content: NextPage = () => {
 
   async function getApi() {
     try {
-      const response = await axios.get("https://api.thedogapi.com/v1/images/search?limit=5&page=10&order=Desc");
+      const response = await axios.get("https://api.thedogapi.com/v1/images/search?limit=10&page=10&order=Desc");
       setUrl(response.data)
 
     } catch (error) {
@@ -22,18 +22,18 @@ const Content: NextPage = () => {
   }, []);
 
   return (
-    <div className={`${styles.contentbox} container`}>
-      <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4">
+    <div className={`${styles.contentbox} lg:container px-10`}>
+      <ul className="grid grid-cols-2 xl:grid-cols-5 gap-10 ">
         {urlLinks.map((value: any, index: any) => {
           return (
             <li key={index}>
               <div
-                className={`card-compact w-96 bg-gray-800 shadow-xl ${styles.cardbox}`}
+                className={`card-compact w-9 shadow-xl ${styles.cardbox}`}
               >
                 <figure>
                   <img src={value.url} alt="Shoes" />
                 </figure>
-                <div className="card-body text-white">
+                <div className={`card-body text-white`}>
                   <h2 className="card-title">Shoes!</h2>
                   <p>If a dog chews shoes whose shoes does he choose?</p>
                   <div className="card-actions justify-center">
@@ -45,6 +45,17 @@ const Content: NextPage = () => {
           );
         })}
       </ul>
+      <div className={`grid grid-cols-2 gap-3 ${styles['banner-mid']}`}>
+        <div className={`${styles['banner1']}`}>
+          teste
+        </div>
+        <div className={`${styles['banner2']}`}>
+          teste
+        </div>
+        <div className={`${styles['banner3']} col-span-2`}>
+          teste
+        </div>
+      </div>
     </div>
   );
 };

@@ -38,7 +38,7 @@ const Banner:NextPage = () => {
         className={`block w-full ${styles.bannerwidth}`}
         alt="..."
       />
-      <div className={`carousel-caption hidden absolute text-center ${styles.bannertextwidth}`}>
+      <div className={`carousel-caption absolute text-center ${styles.bannertextwidth}`}>
         <h5 className="text-xl">First slide label</h5>
         <p>Some representative placeholder content for the first slide.</p>
       </div>
@@ -49,7 +49,7 @@ const Banner:NextPage = () => {
         className={`block w-full ${styles.bannerwidth}`}
         alt="..."
       />
-      <div className={`carousel-caption hidden absolute text-center ${styles.bannertextwidth}`}>
+      <div className={`carousel-caption absolute text-center ${styles.bannertextwidth}`}>
         <h5 className="text-xl">Second slide label</h5>
         <p>Some representative placeholder content for the second slide.</p>
       </div>
@@ -60,7 +60,7 @@ const Banner:NextPage = () => {
         className={`block w-full ${styles.bannerwidth}`}
         alt="..."
       />
-      <div className={`carousel-caption hidden absolute text-center ${styles.bannertextwidth}`}>
+      <div className={`carousel-caption absolute text-center ${styles.bannertextwidth}`}>
         <h5 className="text-xl">Third slide label</h5>
         <p>Some representative placeholder content for the third slide.</p>
       </div>

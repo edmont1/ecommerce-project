@@ -22,3 +22,8 @@ a {
 body{
   background-color: rgb(207, 204, 204);
 }
+
+
+html,body{
+  width: fit-content;
+}
