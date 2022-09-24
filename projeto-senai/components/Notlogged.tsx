@@ -25,7 +25,7 @@ const Notlogged:NextPage = () => {
         </svg>
       </a>
       <div className={`${styles['signup']} ${styles['c-mainmenu']}`}>
-        <a href="">
+        <a href='/logged'>
             <h3>Entrar</h3>
         </a>
         <a href="">
