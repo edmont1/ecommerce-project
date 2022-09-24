@@ -24,7 +24,7 @@ const Content: NextPage = () => {
 
   return (
     <div className={`${styles.contentbox} lg:container px-10`}>
-      <ul className="grid grid-cols-2 xl:grid-cols-4 gap-10 ">
+      <ul className="grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10 ">
         {urlLinks.map((value: any, index: any) => {
           return (
             <li key={index}>
@@ -34,13 +34,15 @@ const Content: NextPage = () => {
                 <figure>
                   <img src={value.image} alt="Shoes" />
                 </figure>
-                <div className={`card-body text-white`}>
-                  <h2 className="card-title">{value.title}</h2>
-                  <div className="card-actions justify-center">
-                    <p>R${value.price}</p>
-                    <a className={`btn btn-active btn-info ${styles.smbutton}`}>Ver Mais</a>
+                <div className={`card-body text-white ${styles['cardbox-div']}`}>
+                  <div>
+                    <h2 className="card-title">{value.title}</h2>
+                  </div>
+                  <p>R${value.price}</p>
+                  <div className={`card-actions justify-center ${styles['buttons-div']}`}>
+                    <a className={`btn btn-active btn-success ${styles.ssbutton}`}>Comprar</a>
                     <Link href={{pathname:'/description', query:{id:value.id}}}>
-                      <a className={`btn btn-active btn-success ${styles.ssbutton}`}>Comprar</a>
+                      <a className={`btn btn-active btn-info ${styles.smbutton}`}>Ver Mais</a>
                     </Link>
                   </div>
                 </div>
