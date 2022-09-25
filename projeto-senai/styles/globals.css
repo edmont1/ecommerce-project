@@ -24,6 +24,8 @@ body{
 }
 
 
-html,body{
-  width: fit-content;
+@media (max-width: 800px){
+  html,body{
+    width: fit-content;
+  }
 }

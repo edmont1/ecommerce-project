@@ -1,5 +1,8 @@
 import { NextPage } from "next"
 import styles from '../styles/Home.module.css'
+import bannerslide1 from '../pages/img/banner-black-friday.jpg'
+import bannerslide2 from '../pages/img/banner-frete.png'
+import bannerslide3 from '../pages/img/banner-black-friday2.jpg'
 
 const Banner:NextPage = () => {
     return(
@@ -34,33 +37,33 @@ const Banner:NextPage = () => {
   <div className="carousel-inner relative w-full overflow-hidden">
     <div className="carousel-item active relative float-left w-full">
       <img
-        src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
+        src={bannerslide1.src}
         className={`block w-full ${styles.bannerwidth}`}
         alt="..."
       />
-      <div className={`carousel-caption absolute text-center ${styles.bannertextwidth}`}>
+      <div className={`carousel-caption absolute hidden text-center ${styles.bannertextwidth}`}>
         <h5 className="text-xl">First slide label</h5>
         <p>Some representative placeholder content for the first slide.</p>
       </div>
     </div>
     <div className="carousel-item relative float-left w-full">
       <img
-        src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
+        src={bannerslide2.src}
         className={`block w-full ${styles.bannerwidth}`}
         alt="..."
       />
-      <div className={`carousel-caption absolute text-center ${styles.bannertextwidth}`}>
+      <div className={`carousel-caption absolute hidden text-center ${styles.bannertextwidth}`}>
         <h5 className="text-xl">Second slide label</h5>
         <p>Some representative placeholder content for the second slide.</p>
       </div>
     </div>
     <div className="carousel-item relative float-left w-full">
       <img
-        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+        src={bannerslide3.src}
         className={`block w-full ${styles.bannerwidth}`}
         alt="..."
       />
-      <div className={`carousel-caption absolute text-center ${styles.bannertextwidth}`}>
+      <div className={`carousel-caption absolute hidden text-center ${styles.bannertextwidth}`}>
         <h5 className="text-xl">Third slide label</h5>
         <p>Some representative placeholder content for the third slide.</p>
       </div>

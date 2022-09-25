@@ -8,16 +8,17 @@
     margin: 30px auto 0 auto;
     width: 100%;
     background-color: rgba(11, 9, 43, 0.932);
-    height: 650px;
-
+    height: 670px;
+    border-radius: 8px;
 }
 
 .cardbox-div h2{
     color: white;
+    font-size: 15px;
 }
 
 .cardbox-div > div{
-    height: 100px;
+    height: 105px;
 
 }
 
@@ -46,7 +47,7 @@
 .cardbox p{
     position: absolute;
     bottom: 18%;
-    font-size: 28px;
+    font-size: 25px;
     color: green;
 }
 
@@ -68,30 +69,30 @@
         height: 410px;
     }
     .cardbox p{
-        font-size: 40px;
+        font-size: 35px;
     }
 
 }
 
-.banner-mid{
+.banners-mid{
     margin-top: 30px;
 
 }
 
-
-.banner1{
-    background-color: red;
-    height: 500px;
+.banner1 img{
+    width: 100%;
+    height: 100%;
 }
 
 .banner2{
     background-color: purple;
-    height: 500px;
+    height: 545px;
 }
 
-.banner3{
-    height: 500px;
-    background-color: orange;
+.banner2 img{
+    height: 100%;
+    width: 100%;
 }
+
 
 
