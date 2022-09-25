@@ -1,17 +1,40 @@
+import axios from "axios";
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import Banner from "../components/Banner";
-import Content from "../components/Content";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Logged from "../components/Logged";
 import Notlogged from "../components/Notlogged";
 dynamic(import("tw-elements"), { ssr: false });
 import verifyLogin from "../components/verifyLogin";
+import styles from "../styles/Description.module.css";
 
 const Description: NextPage = () => {
+  const router = useRouter();
+  const query: any = router.query;
+
+  let [request_response, setUrl] = useState([]);
+
+  async function getApi() {
+    try {
+      const response = await axios.get("https://fakestoreapi.com/products?");
+      setUrl(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getApi();
+  }, []);
+
+  let index = ~~query.id - 1;
+  let product_details: any = request_response[index];
+
   return (
     <>
       <Head>
@@ -29,8 +52,18 @@ const Description: NextPage = () => {
         </Header>
       )}
       <Banner />
-      <Content />
-      <p>{useRouter().query.id}</p>
+      <div className={styles["product-card"]}>
+        <img src={product_details?.image} alt="" />
+        <div>
+          <p>{product_details?.title}</p>
+          <p>{product_details?.description}</p>
+          <div className={styles['pricebuy-box']}>
+            <p>R${product_details?.price}</p>
+            <a className="btn btn-success btn-active" href="#">Comprar Agora</a>
+          </div>
+        </div>
+      </div>
+      <Footer/>
     </>
   );
 };

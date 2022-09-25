@@ -9,8 +9,9 @@ import Notlogged from "../components/Notlogged";
 import Logged from "../components/Logged";
 dynamic(import("tw-elements"), { ssr: false });
 import verifyLogin from "../components/verifyLogin";
+import Login from "../components/Login";
 
-const Home: NextPage = () => {
+const LoginPage: NextPage = () => {
 
   return (
     <>
@@ -29,11 +30,10 @@ const Home: NextPage = () => {
         </Header>
       )}
       <Banner />
-      <Content />
+      <Login/>
       <Footer/>
-      
     </>
   );
 };
 
-export default Home;
+export default LoginPage;

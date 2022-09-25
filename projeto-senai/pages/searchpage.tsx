@@ -10,8 +10,7 @@ import Logged from "../components/Logged";
 dynamic(import("tw-elements"), { ssr: false });
 import verifyLogin from "../components/verifyLogin";
 
-const Home: NextPage = () => {
-
+const Searchpage: NextPage = () => {
   return (
     <>
       <Head>
@@ -29,11 +28,8 @@ const Home: NextPage = () => {
         </Header>
       )}
       <Banner />
-      <Content />
-      <Footer/>
-      
     </>
   );
 };
 
-export default Home;
+export default Searchpage;

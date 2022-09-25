@@ -1,0 +1,9 @@
+.footer-main{
+    background-color: rgba(11, 9, 43, 0.932);
+    margin-top: 45px;
+    color: rgba(255, 255, 255, 0.527);
+}
+
+.footer-links a{
+    color: rgba(255, 255, 255, 0.527) !important;
+}

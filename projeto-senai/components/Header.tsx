@@ -115,7 +115,7 @@ focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline
               <label htmlFor="searchId">Buscar</label>
               <div>
                 <input id="searchId" type="text" />
-                <a href="">
+                <a href="/searchpage">
                   <img src={searchicon.src} />
                 </a>
               </div>
