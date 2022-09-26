@@ -38,10 +38,24 @@
 }
 
 .pricebuy-box a{
-    margin: 40px;
+    margin: 40px 10px;
 }
 
 .pricebuy-box p{
     color: green;
     font-size: 30px !important;
+    padding: 40px;
+}
+
+.pricebuy-box .ssbutton{
+    margin: 0 10px;
+    color: rgb(47, 131, 92);
+}
+
+.pricebuy-box .smbutton{
+    margin: 0 10px;
+    background: rgb(75, 12, 223);
+    color: #d4c4fa;
+    border: none;
+
 }

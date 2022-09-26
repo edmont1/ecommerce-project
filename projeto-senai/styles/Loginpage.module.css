@@ -1,9 +1,12 @@
 .login-box{
-    height: 800px;
-    width: 800px;
-    background-color: purple;
     margin: 0 auto;
     margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
+.login-box > div{
+    
+}

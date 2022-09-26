@@ -58,9 +58,6 @@
 .cardbox img{
     width: 100%;
     height: 400px;
-    object-fit: fill;
-
-
 }
 
 @media (min-width: 300px) and (max-width:500px){

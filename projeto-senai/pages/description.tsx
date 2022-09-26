@@ -2,7 +2,9 @@ import axios from "axios";
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { ParsedUrlQuery } from "querystring";
 import { useEffect, useState } from "react";
 import Banner from "../components/Banner";
 import Footer from "../components/Footer";
@@ -15,7 +17,7 @@ import styles from "../styles/Description.module.css";
 
 const Description: NextPage = () => {
   const router = useRouter();
-  const query: any = router.query;
+  const query:any = router.query;
 
   let [request_response, setUrl] = useState([]);
 
@@ -29,10 +31,12 @@ const Description: NextPage = () => {
   }
 
   useEffect(() => {
-    getApi();
-  }, []);
+    if(router.isReady){
+      getApi();
+    }
+  }, [router]);
 
-  let index = ~~query.id - 1;
+  let index: number = ~~query.id - 1;
   let product_details: any = request_response[index];
 
   return (
@@ -57,13 +61,26 @@ const Description: NextPage = () => {
         <div>
           <p>{product_details?.title}</p>
           <p>{product_details?.description}</p>
-          <div className={styles['pricebuy-box']}>
+          <div className={styles["pricebuy-box"]}>
             <p>R${product_details?.price}</p>
-            <a className="btn btn-success btn-active" href="#">Comprar Agora</a>
+            <a
+              className={`btn btn-active btn-success ${styles.ssbutton}`}
+              href="#"
+            >
+              Comprar Agora
+            </a>
+            <Link href={"/"}>
+              <a
+                className={`btn btn-active btn-info ${styles.smbutton}`}
+                href=""
+              >
+                Voltar
+              </a>
+            </Link>
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

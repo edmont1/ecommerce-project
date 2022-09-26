@@ -11,7 +11,6 @@ dynamic(import("tw-elements"), { ssr: false });
 import verifyLogin from "../components/verifyLogin";
 import Login from "../components/Login";
 import axios from "axios";
-import Register from "../components/Register";
 
 const LoginPage: NextPage = () => {
 
