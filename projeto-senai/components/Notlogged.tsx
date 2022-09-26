@@ -28,7 +28,7 @@ const Notlogged:NextPage = () => {
         <a href='/loginpage'>
             <h3>Entrar</h3>
         </a>
-        <a href="/loginpage">
+        <a href="/registerpage">
             <h3>Cadastrar</h3>
         </a>
       </div>
