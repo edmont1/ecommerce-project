@@ -112,6 +112,7 @@ const Content: NextPage = () => {
                       Comprar
                     </a>
                     <Link
+                      
                       href={{
                         pathname: "/description",
                         query: { id: value.id },

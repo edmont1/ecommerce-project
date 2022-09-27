@@ -2,6 +2,7 @@ import { NextPage } from "next"
 import styles from '../styles/Header.module.css'
 
 const Notlogged:NextPage = () => {
+
     return(
     <>
               <a

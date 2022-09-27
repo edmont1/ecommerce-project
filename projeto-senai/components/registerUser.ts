@@ -1,7 +1,8 @@
 import axios from "axios";
 
 export default function registerUser(data: any) {
-  axios
+  if(data){
+    axios
     .post("https://login-front-end-ed-default-rtdb.firebaseio.com/teste.json", {
       name: data.name,
       lastname: data.lastname,
@@ -14,4 +15,10 @@ export default function registerUser(data: any) {
     .catch((error) => {
       console.log(error);
     });
+    
+    window.location.href = '/'
+  }
+  else{
+    alert('Não deixe campos em branco')
+  }
 }

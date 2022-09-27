@@ -1,9 +1,16 @@
 import { setCookie } from "nookies";
 
-export default function cookies(data:any){
-    setCookie(null, 'islogged', data.toString(), {
-        maxAge: 30 * 24 * 60 * 60,
-        path: '/',
-      })
-    
+export default function cookies(data: any) {
+  setCookie(null, "islogged", data.toString(), {
+    maxAge: 30 * 24 * 60 * 60,
+    path: "/",
+  });
+
+  if (data == true) {
+    window.location.href = "/";
+  }
+  else{
+    alert('Usuario ou senha incorretos')
+  }
+  
 }

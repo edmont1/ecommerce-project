@@ -1,9 +1,20 @@
-import { NextPage } from "next"
+import { NextPage } from "next";
+import dynamic from "next/dynamic";
+import { parseCookies } from "nookies";
+import { useEffect, useState } from "react";
 
-const Logged:NextPage = () => {
-    return(
+const Logged: NextPage = () => {
+  const cookies = parseCookies();
+
+  let [cookiestate, setcookiestate] = useState("");
+
+  useEffect(() => {
+    setcookiestate(cookies.islogged);
+  }, [cookiestate]);
+
+  return (
     <>
-              <a
+      <a
         className="text-gray-400 hover:text-gray-700 focus:text-gray-700 mr-4"
         href="#"
       >
@@ -245,12 +256,13 @@ right-0
 "
               href="#"
             >
-              Something else here
+              Sair
             </a>
           </li>
         </ul>
       </div>
-    </>)
-}
+    </>
+  );
+};
 
-export default Logged
+export default Logged;
