@@ -6,7 +6,6 @@ import Link from "next/link";
 import banner1 from "../pages/img/bf-banner.png";
 import banner2 from "../pages/img/bannershoes.jpg";
 import banner3 from "../pages/img/banner-loja-1.jpg";
-import { setCookie } from "nookies";
 
 
 const Content: NextPage = () => {

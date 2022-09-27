@@ -8,7 +8,6 @@ import Header from "../components/Header";
 import Notlogged from "../components/Notlogged";
 import Logged from "../components/Logged";
 dynamic(import("tw-elements"), { ssr: false });
-import verifyLogin from "../components/verifyLogin";
 import { parseCookies } from "nookies";
 import { useEffect, useState } from "react";
 

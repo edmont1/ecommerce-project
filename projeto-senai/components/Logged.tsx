@@ -1,6 +1,5 @@
 import { NextPage } from "next";
-import dynamic from "next/dynamic";
-import { destroyCookie, parseCookies, setCookie } from "nookies";
+import { parseCookies, setCookie } from "nookies";
 import { useEffect, useState } from "react";
 
 const Logged: NextPage = () => {

@@ -6,6 +6,6 @@
 @media (max-width: 600px){
     .bannerwidth{
         height: 500px;
-        object-fit: fill;
+        object-fit: fill
     }
 }

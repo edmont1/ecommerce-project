@@ -1,8 +1,6 @@
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import Banner from "../components/Banner";
-import Content from "../components/Content";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Notlogged from "../components/Notlogged";
