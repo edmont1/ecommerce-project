@@ -1,17 +1,44 @@
 import axios from "axios";
 import { NextPage } from "next";
-import Link from "next/link";
-import { setCookie } from "nookies";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styles from "../styles/Loginpage.module.css";
-import registerUser from "./registerUser";
-import verifyLogin from "./verifyLogin";
 
 const Register: NextPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [lastname, setLastname] = useState("");
   const [pass, setPass] = useState("");
+
+  const divref = useRef<HTMLDivElement>(null);
+
+  function registerUser(data: any) {
+    if (
+      data.email.includes('@') &&
+      data.name != "" &&
+      data.lastname != "" &&
+      data.email != "" &&
+      data.pass != "" 
+    ) {
+      axios
+        .post(
+          "https://login-front-end-ed-default-rtdb.firebaseio.com/teste.json",
+          {
+            name: data.name,
+            lastname: data.lastname,
+            email: data.email,
+            password: data.pass,
+          }
+        )
+        .then((response) => {
+          console.log(response);
+          window.location.href = "/";
+          divref.current?.classList.remove("hidden");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
 
   return (
     <div className={styles["login-box"]}>
@@ -238,103 +265,127 @@ const Register: NextPage = () => {
                   <h1 className="font-bold text-3xl text-gray-900">REGISTER</h1>
                   <p>Enter your information to register</p>
                 </div>
-                <div>
-                  <div className="flex -mx-3">
-                    <div className="w-1/2 px-3 mb-5">
-                      <label htmlFor="" className="text-xs font-semibold px-1">
-                        First name
-                      </label>
-                      <div className="flex">
-                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                          <i className="mdi mdi-account-outline text-gray-400 text-lg" />
+                <form onSubmit={(e)=>{e.preventDefault()}}>
+                  <div>
+                    <div className="flex -mx-3">
+                      <div className="w-1/2 px-3 mb-5">
+                        <label
+                          htmlFor=""
+                          className="text-xs font-semibold px-1"
+                        >
+                          First name
+                        </label>
+                        <div className="flex">
+                          <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                            <i className="mdi mdi-account-outline text-gray-400 text-lg" />
+                          </div>
+                          <input
+                            type="text"
+                            className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                            placeholder="Nome"
+                            onChange={(e) => {
+                              setName(e.currentTarget.value);
+                            }}
+                            required
+                          />
                         </div>
-                        <input
-                          type="text"
-                          className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                          placeholder="Nome"
-                          onChange={(e) => {
-                            setName(e.currentTarget.value);
-                          }}
-                        />
+                      </div>
+                      <div className="w-1/2 px-3 mb-5">
+                        <label
+                          htmlFor=""
+                          className="text-xs font-semibold px-1"
+                        >
+                          Last name
+                        </label>
+                        <div className="flex">
+                          <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                            <i className="mdi mdi-account-outline text-gray-400 text-lg" />
+                          </div>
+                          <input
+                            type="text"
+                            className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                            placeholder="Sobrenome"
+                            onChange={(e) => {
+                              setLastname(e.currentTarget.value);
+                            }}
+                            required
+                          />
+                        </div>
                       </div>
                     </div>
-                    <div className="w-1/2 px-3 mb-5">
-                      <label htmlFor="" className="text-xs font-semibold px-1">
-                        Last name
-                      </label>
-                      <div className="flex">
-                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                          <i className="mdi mdi-account-outline text-gray-400 text-lg" />
+                    <div className="flex -mx-3">
+                      <div className="w-full px-3 mb-5">
+                        <label
+                          htmlFor=""
+                          className="text-xs font-semibold px-1"
+                        >
+                          Email
+                        </label>
+                        <div className="flex">
+                          <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                            <i className="mdi mdi-email-outline text-gray-400 text-lg" />
+                          </div>
+                          <input
+                            type="email"
+                            className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                            placeholder="johnsmith@example.com"
+                            onChange={(e) => {
+                              setEmail(e.currentTarget.value);
+                            }}
+                            required
+                          />
                         </div>
-                        <input
-                          type="text"
-                          className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                          placeholder="Sobrenome"
-                          onChange={(e) => {
-                            setLastname(e.currentTarget.value);
-                          }}
-                        />
                       </div>
                     </div>
-                  </div>
-                  <div className="flex -mx-3">
-                    <div className="w-full px-3 mb-5">
-                      <label htmlFor="" className="text-xs font-semibold px-1">
-                        Email
-                      </label>
-                      <div className="flex">
-                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                          <i className="mdi mdi-email-outline text-gray-400 text-lg" />
+                    <div className="flex -mx-3">
+                      <div className="w-full px-3 mb-12">
+                        <label
+                          htmlFor=""
+                          className="text-xs font-semibold px-1"
+                        >
+                          Password
+                        </label>
+                        <div className="flex">
+                          <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                            <i className="mdi mdi-lock-outline text-gray-400 text-lg" />
+                          </div>
+                          <input
+                            type="password"
+                            className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                            placeholder="************"
+                            onChange={(e) => {
+                              setPass(e.currentTarget.value);
+                            }}
+                            required
+                          />
                         </div>
-                        <input
-                          type="email"
-                          className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                          placeholder="johnsmith@example.com"
-                          onChange={(e) => {
-                            setEmail(e.currentTarget.value);
-                          }}
-                        />
                       </div>
                     </div>
-                  </div>
-                  <div className="flex -mx-3">
-                    <div className="w-full px-3 mb-12">
-                      <label htmlFor="" className="text-xs font-semibold px-1">
-                        Password
-                      </label>
-                      <div className="flex">
-                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                          <i className="mdi mdi-lock-outline text-gray-400 text-lg" />
-                        </div>
-                        <input
-                          type="password"
-                          className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                          placeholder="************"
-                          onChange={(e) => {
-                            setPass(e.currentTarget.value);
+                    <div className="flex -mx-3">
+                      <div className="w-full px-3 mb-5">
+                        <button
+                          onClick={() => {
+                            registerUser({
+                              name: name,
+                              email: email,
+                              lastname: lastname,
+                              pass: pass,
+                            });
                           }}
-                        />
+                          className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"
+                        >
+                          Cadastrar
+                        </button>
                       </div>
                     </div>
-                  </div>
-                  <div className="flex -mx-3">
-                    <div className="w-full px-3 mb-5">
-                      <button
-                        onClick={() => {
-                          registerUser({
-                            name: name,
-                            email: email,
-                            lastname: lastname,
-                            pass: pass,
-                          });
-                        }}
-                        className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"
-                      >
-                        CADASTRAR
-                      </button>
+                    <div
+                      ref={divref}
+                      className={`hidden ${styles.registersuccess}`}
+                    >
+                      <p>Cadastro bem sucedido.</p>
                     </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>

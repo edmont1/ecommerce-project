@@ -5,3 +5,15 @@
     justify-content: center;
     align-items: center;
 }
+
+.loginwarn{
+    color: red;
+}
+
+.loginsuccess{
+    color: green;
+}
+
+.registersuccess{
+    color: green;
+}

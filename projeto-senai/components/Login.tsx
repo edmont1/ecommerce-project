@@ -1,14 +1,48 @@
 import axios from "axios";
 import { NextPage } from "next";
-import Link from "next/link";
-import { parseCookies, setCookie } from "nookies";
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import styles from "../styles/Loginpage.module.css";
-import verifyLogin from "./verifyLogin";
+import cookies from "./setcookie";
 
 const Login: NextPage = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+
+  const divrefwarn1 = useRef<HTMLDivElement>(null);
+  const divrefwarn2 = useRef<HTMLDivElement>(null);
+  const divrefsuccess = useRef<HTMLDivElement>(null);
+
+  async function verifyLogin(data: any) {
+    let logged = false;
+
+    await axios
+      .post("/api/login", {
+        email: data.email,
+        password: data.pass,
+      })
+      .then((resp) => {
+        logged = resp.data.status;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    if (data.email == "" || data.pass == "") {
+      divrefwarn2.current?.classList.remove("hidden");
+      divrefwarn1.current?.classList.add("hidden");
+    } else if (logged == false) {
+      divrefwarn1.current?.classList.remove("hidden");
+      divrefwarn2.current?.classList.add("hidden");
+    } else if (logged == true) {
+      divrefsuccess.current?.classList.remove("hidden");
+      divrefwarn1.current?.classList.add("hidden");
+      divrefwarn2.current?.classList.add("hidden");
+    }
+
+    cookies(logged);
+
+    return logged;
+  }
 
   return (
     <>
@@ -236,67 +270,87 @@ const Login: NextPage = () => {
                     <h1 className="font-bold text-3xl text-gray-900">LOGIN</h1>
                     <p>Enter your information to login</p>
                   </div>
-                  <div>
-                    <div className="flex -mx-3">
-                      <div className="w-full px-3 mb-5">
-                        <label
-                          htmlFor=""
-                          className="text-xs font-semibold px-1"
-                        >
-                          Email
-                        </label>
-                        <div className="flex">
-                          <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                            <i className="mdi mdi-email-outline text-gray-400 text-lg" />
+                  <form action="#" onSubmit={(e)=>{e.preventDefault()}}>
+                    <div>
+                      <div className="flex -mx-3">
+                        <div className="w-full px-3 mb-5">
+                          <label
+                            htmlFor=""
+                            className="text-xs font-semibold px-1"
+                          >
+                            Email
+                          </label>
+                          <div className="flex">
+                            <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                              <i className="mdi mdi-email-outline text-gray-400 text-lg" />
+                            </div>
+                            <input
+                              type="email"
+                              className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                              placeholder="johnsmith@example.com"
+                              onChange={(e) => {
+                                setEmail(e.currentTarget.value);
+                              }}
+                            />
                           </div>
-                          <input
-                            type="email"
-                            className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                            placeholder="johnsmith@example.com"
-                            onChange={(e) => {
-                              setEmail(e.currentTarget.value);
-                            }}
-                          />
                         </div>
                       </div>
-                    </div>
-                    <div className="flex -mx-3">
-                      <div className="w-full px-3 mb-12">
-                        <label
-                          htmlFor=""
-                          className="text-xs font-semibold px-1"
-                        >
-                          Password
-                        </label>
-                        <div className="flex">
-                          <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                            <i className="mdi mdi-lock-outline text-gray-400 text-lg" />
+                      <div className="flex -mx-3">
+                        <div className="w-full px-3 mb-12">
+                          <label
+                            htmlFor=""
+                            className="text-xs font-semibold px-1"
+                          >
+                            Password
+                          </label>
+                          <div className="flex">
+                            <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                              <i className="mdi mdi-lock-outline text-gray-400 text-lg" />
+                            </div>
+                            <input
+                              type="password"
+                              className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                              placeholder="************"
+                              onChange={(e) => {
+                                setPass(e.currentTarget.value);
+                              }}
+                            />
                           </div>
-                          <input
-                            type="password"
-                            className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                            placeholder="************"
-                            onChange={(e) => {
-                              setPass(e.currentTarget.value);
-                            }}
-                          />
                         </div>
                       </div>
-                    </div>
-                    <div className="flex -mx-3">
-                      <div className="w-full px-3 mb-5">
-                        <button
-                          type="submit"
-                          onClick={() => {
-                            verifyLogin({ email: email, pass: pass });
-                          }}
-                          className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"
-                        >
-                          Entrar
-                        </button>
+                      <div className="flex -mx-3">
+                        <div className="w-full px-3 mb-5">
+                          <button
+                            type="submit"
+                            onClick={() => {
+                              verifyLogin({ email: email, pass: pass });
+                            }}
+                            className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"
+                          >
+                            Entrar
+                          </button>
+                        </div>
+                      </div>
+                      <div
+                        ref={divrefwarn1}
+                        className={`hidden ${styles.loginwarn}`}
+                      >
+                        <p id="rogerio">Login ou senha incorretos.</p>
+                      </div>
+                      <div
+                        ref={divrefwarn2}
+                        className={`hidden ${styles.loginwarn}`}
+                      >
+                        <p id="rogerio">Não deixe campos em branco.</p>
+                      </div>
+                      <div
+                        ref={divrefsuccess}
+                        className={`hidden ${styles.loginsuccess}`}
+                      >
+                        <p id="rogerio">Login bem sucedido.</p>
                       </div>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -308,3 +362,6 @@ const Login: NextPage = () => {
 };
 
 export default Login;
+function verifyLogin(arg0: { email: string; pass: string }) {
+  throw new Error("Function not implemented.");
+}

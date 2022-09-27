@@ -9,8 +9,5 @@ export default function cookies(data: any) {
   if (data == true) {
     window.location.href = "/";
   }
-  else{
-    alert('Usuario ou senha incorretos')
-  }
   
 }

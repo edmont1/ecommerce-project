@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import dynamic from "next/dynamic";
-import { parseCookies } from "nookies";
+import { destroyCookie, parseCookies, setCookie } from "nookies";
 import { useEffect, useState } from "react";
 
 const Logged: NextPage = () => {
@@ -11,6 +11,11 @@ const Logged: NextPage = () => {
   useEffect(() => {
     setcookiestate(cookies.islogged);
   }, [cookiestate]);
+
+  async function logoff() {
+    setCookie(null, 'islogged', '',{maxage:-1})
+    window.location.href = "/";
+  }
 
   return (
     <>
@@ -216,7 +221,7 @@ right-0
 "
               href="#"
             >
-              Action
+              Meu perfil
             </a>
           </li>
           <li>
@@ -236,7 +241,7 @@ right-0
 "
               href="#"
             >
-              Another action
+              Configurações
             </a>
           </li>
           <li>
@@ -255,6 +260,7 @@ right-0
   hover:bg-gray-100
 "
               href="#"
+              onClick={logoff}
             >
               Sair
             </a>
